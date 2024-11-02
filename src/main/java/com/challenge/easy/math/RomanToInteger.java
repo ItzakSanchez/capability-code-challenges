@@ -1,5 +1,7 @@
 package com.challenge.easy.math;
 
+import java.util.HashMap;
+
 /**
     # Roman to Integer
 
@@ -47,10 +49,38 @@ package com.challenge.easy.math;
 public class RomanToInteger {
 
     public static int romanToInt(String s) {
-        return 0;
+        HashMap<Character,Integer> roman = new HashMap<>();
+        roman.put('M', 1000);
+        roman.put('D', 500);
+        roman.put('C', 100);
+        roman.put('L', 50);
+        roman.put('X', 10);
+        roman.put('V', 5);
+        roman.put('I', 1);
+        
+        int total = 0;
+        for(int i=0; i<s.length(); i++){
+
+            if(i<s.length()-1){
+                if (roman.get(s.charAt(i)) < roman.get(s.charAt(i+1))){
+                    total += roman.get(s.charAt(i+1)) - roman.get(s.charAt(i));
+                    i++;
+                }
+                else {
+                    total += roman.get(s.charAt(i));
+                }
+            } else{
+                total += roman.get(s.charAt(i));
+            }
+            
+            System.out.print(s.charAt(i));
+            System.out.println("Total "+total);
+        }
+        return total;
     }
+    
 
     public static void main(String[] args) {
-
+        romanToInt("III");
     }
 }

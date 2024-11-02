@@ -32,10 +32,22 @@ package com.challenge.easy.string;
 public class SortingSentence {
 
     public static String sortSentence(String s) {
-        return null;
+        String result = "";
+        String[] array = s.split(" ");
+        String[] sortedArray = array.clone();
+
+        for (String elem : array) {
+            int val = Integer.parseInt(elem.charAt(elem.length()-1)+"");
+            elem = elem.substring(0, elem.length()-1);
+            sortedArray[val-1] = elem;    
+        }
+        for (String elem : sortedArray){
+            result = result.concat(elem+" ");
+        }
+        return result.trim();
     }
 
     public static void main(String[] args) {
-
+        System.out.println(sortSentence("Myself2 Me1 I4 and3"));
     }
 }

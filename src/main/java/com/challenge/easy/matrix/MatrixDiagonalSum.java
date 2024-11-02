@@ -44,10 +44,23 @@ package com.challenge.easy.matrix;
 public class MatrixDiagonalSum {
 
     public static int diagonalSum(int[][] mat) {
-        return 0;
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < mat.length; j++) {
+                if(i==j){
+                    sum += mat[i][j];
+                } else{
+                    if (j==mat[0].length-1-i) {
+                        sum += mat[i][j];
+                    }
+                }
+            }
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
-
+        int[][] mat = {{1, 2, 3},{4, 5, 6},{7, 8, 9}};
+        System.out.println(diagonalSum(mat)); 
     }
 }

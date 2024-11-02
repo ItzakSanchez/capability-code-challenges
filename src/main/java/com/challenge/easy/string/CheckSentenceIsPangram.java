@@ -1,5 +1,7 @@
 package com.challenge.easy.string;
 
+import java.util.HashMap;
+
 /**
 
     # Check if the Sentence Is Pangram
@@ -25,10 +27,15 @@ package com.challenge.easy.string;
 public class CheckSentenceIsPangram {
 
     public static boolean checkIfPangram(String sentence) {
-        return false;
+        HashMap<Character,Integer> letters = new  HashMap<>();
+        for (int i = 0; i < sentence.length(); i++) {
+            letters.put(sentence.charAt(i),1);
+        }
+        int total = letters.values().stream().mapToInt(Integer::intValue).sum();
+        return total==26;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"));
     }
 }

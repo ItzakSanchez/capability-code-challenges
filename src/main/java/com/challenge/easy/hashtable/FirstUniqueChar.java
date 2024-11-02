@@ -25,10 +25,24 @@ package com.challenge.easy.hashtable;
 public class FirstUniqueChar {
 
     public static int firstUniqChar(String s) {
-        return 0;
+        char[] arr = s.toCharArray();
+        boolean repeated = false;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                repeated = false;
+                if (i!=j){
+                    if (arr[i] == arr[j]) {
+                        repeated = true;
+                        break;
+                    }
+                }
+            }
+            if (!repeated)return i;
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(firstUniqChar("aabb"));
     }
 }

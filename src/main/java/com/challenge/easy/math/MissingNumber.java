@@ -1,5 +1,11 @@
 package com.challenge.easy.math;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
     # Missing Number
 
@@ -30,10 +36,32 @@ package com.challenge.easy.math;
 public class MissingNumber {
 
     public static int missingNumber(int[] nums) {
-        return 0;
+        List<Integer> numList = new ArrayList<Integer>();
+        for (int e:nums) {
+            numList.add(e);            
+        }
+        Collections.sort(numList);
+        if (numList.get(0)!=0) {
+            return 0;
+        }
+        //BinarySearch
+        int mid = 0;
+        int left = 0;
+        int right = numList.size()-1;
+        while(left <= right){
+            mid = (left+right)/2;
+            if(numList.get(mid)>mid){
+                right = mid-1;
+            }
+            if(numList.get(mid)==mid){
+                left=mid+1;
+            }
+        }
+        return left;
     }
 
     public static void main(String[] args) {
-
+        System.out.println("hola");
+        System.out.println(missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));
     }
 }

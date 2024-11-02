@@ -36,10 +36,37 @@ package com.challenge.easy.string;
 public class BalancedString {
 
     public static int balancedStringSplit(String s) {
-        return 0;
+        String[] arr = new String[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            arr[i]=s.charAt(i)+"";
+        }
+
+        int result = 0;
+        int count = 0;
+        String charToSearch = "";
+
+        for (String arr1 : arr) {
+            if ("".equals(charToSearch)) {
+                charToSearch = arr1;
+                count ++;
+                continue;
+            }
+            if (arr1.equals(charToSearch)) {
+                count ++;
+                continue;
+            }
+            if (!arr1.equals(charToSearch) && count>0) {
+                count --;
+                if (count==0){
+                    result++;
+                    charToSearch = "";
+                }
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(balancedStringSplit("RLRRLLRLRL"));
     }
 }

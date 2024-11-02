@@ -30,10 +30,24 @@ package com.challenge.easy.math;
 public class PalindromeNumber {
 
     public static boolean isPalindrome(int x) {
-        return false;
+        int r,sum=0,temp;
+        temp=x;
+        while(x>0){    
+            r=x%10;
+            sum=(sum*10)+r;    
+            x=x/10;    
+           }    
+        if(temp==sum){
+            System.out.println("palindrome number ");
+            return true;
+        }
+        else{
+            System.out.println("not palindrome");
+            return false;
+        }
     }
 
     public static void main(String[] args) {
-
+        isPalindrome(10001);
     }
 }

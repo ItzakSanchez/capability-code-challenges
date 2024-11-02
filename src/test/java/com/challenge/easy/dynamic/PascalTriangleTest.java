@@ -17,6 +17,10 @@ public class PascalTriangleTest {
         expected1.add(List.of(1, 2, 1));
         expected1.add(List.of(1, 3, 3, 1));
         expected1.add(List.of(1, 4, 6, 4, 1));
+        System.out.println("TEST");
+        System.out.println(test1);
+        System.out.println("EXPECTED");
+        System.out.println(expected1);
         Assert.assertEquals(test1, expected1);
 
         List<List<Integer>> test2 = PascalTriangle.generate(1);

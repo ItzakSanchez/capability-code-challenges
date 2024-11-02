@@ -34,10 +34,53 @@ package com.challenge.easy.matrix;
 public class FlippingImage {
 
     public static int[][] flipAndInvertImage(int[][] image) {
-        return null;
+        
+        int temp = 0;
+
+        //FLIP
+        for(int i =0; i<(image[0].length) ;i++){
+            for(int j =0; j<(image[0].length/2);j++){
+                temp = image[i][j];
+                image[i][j] = image[i][image[0].length-1-j];
+                image[i][image[0].length-j-1] = temp;
+            }
+        }
+        //INVERT
+        for(int i =0; i<(image[0].length) ;i++){
+            for(int j =0; j<(image[0].length);j++){
+                if(image[i][j] ==0){
+                    image[i][j]= 1;
+                }
+                else{
+                    image[i][j] = 0;
+                }
+            }
+        }
+        return image;
     }
 
     public static void main(String[] args) {
+        int[][] image =  {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
 
+        
+        for(int i =0; i<(image[0].length) ;i++){
+            for(int j =0; j<image[0].length;j++){
+                System.out.print(image[i][j]+" ");
+            }
+            System.out.println();
+        }
+        System.out.println("-----------------");
+
+        flipAndInvertImage(image);
+
+        for(int i =0; i<(image[0].length) ;i++){
+            for(int j =0; j<image[0].length;j++){
+                System.out.print(image[i][j]+" ");
+            }
+            System.out.println();
+           
+        }
+        System.out.println("--------");
+        
     }
 }
